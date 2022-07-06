@@ -1,0 +1,14 @@
+.search-text-field {
+    background-color: whitesmoke;
+    border-radius: 4px;
+}
+
+.search-botton {
+    margin-left: 1%;
+    margin-top: 1px;
+}
+
+.loading-button {
+    background-color: #1565C0;
+    color: white;
+}
