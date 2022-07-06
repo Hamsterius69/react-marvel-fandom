@@ -5,7 +5,6 @@ import Search from '@material-ui/icons/Search';
 import LoadingButton from '@mui/lab/LoadingButton';
 
 function SearchComponent() {
-
   return (
 		<div>
 			<TextField className='search-text-field' id="standard-basic" type="search" size='small'/>
