@@ -1,0 +1,35 @@
+.card {
+	display: inline-block;
+	margin: 5px 10px 5px;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card-image {
+	height: 250px;
+	width: 250px;
+	border-radius: 5px;
+}
+
+.name-label {
+	height: 34px;
+	width: 250px;
+	padding-top: 10px;
+	margin-top: -44px;
+	opacity: 0.7;
+	background-color: black;
+	color: white;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	font-family: Verdana, sans-serif;
+  white-space: nowrap;
+	overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-name {
+	margin: 0;
+	padding: 0;
+}
