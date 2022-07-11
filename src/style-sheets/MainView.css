@@ -10,3 +10,27 @@
 	margin-top: 10px;
 	display: inline-flex;
 }
+
+.pagination {
+	margin: 20px;
+	margin-top: 10px;
+	display: inline-flex;
+}
+
+.select-pagination {
+	background-color: #282c34;
+}
+
+.test {
+	display: none !important;
+	background-color: red !important;
+	color: green !important;
+	display: inline-block !important;
+}
+
+.linear-progress {
+	width: 50%;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
