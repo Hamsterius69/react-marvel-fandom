@@ -1,9 +1,11 @@
 .search-button {
   margin-left: 1% !important;
   margin-top: 1px !important;
+  display: inline-flex;
 }
 
 .search-text-field {
   background-color: whitesmoke;
   border-radius: 4px;
+  display: flex;
 }
