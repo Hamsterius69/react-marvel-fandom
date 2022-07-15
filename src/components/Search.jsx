@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
-import { updateWordToSearch } from '../store/itemToSearch/actions'
+import { updateWordToSearch, updatekindItemToSearch } from '../store/itemToSearch/actions'
 import '../style-sheets/Search.css';
-import {TextField, Button} from '@mui/material';
+import { TextField, Button } from '@mui/material';
 import Search from '@material-ui/icons/Search';
 
-function SearchComponent({updateWordToSearch, isDisable}) {
+function SearchComponent({updateWordToSearch, updatekindItemToSearch, isDisable}) {
 	const [input, setInput] = useState('');
 
 	function handleKeyDown(event) {
@@ -15,8 +15,9 @@ function SearchComponent({updateWordToSearch, isDisable}) {
 	}
 
 	const handleChangeSelect = () => {
-    console.log(document.getElementById("itemsKind").value);
-  }
+    updatekindItemToSearch(document.getElementById("itemsKind").value)
+		// console.log(document.getElementById("itemsKind").value);
+	}
 
 	return (
 		<div>
@@ -40,4 +41,4 @@ function SearchComponent({updateWordToSearch, isDisable}) {
 		</div>
   );
 }
-export default connect(null, { updateWordToSearch })(SearchComponent);
+export default connect(null, { updateWordToSearch, updatekindItemToSearch })(SearchComponent);
