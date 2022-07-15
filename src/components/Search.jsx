@@ -14,8 +14,23 @@ function SearchComponent({updateWordToSearch, isDisable}) {
   	}
 	}
 
+	const handleChangeSelect = () => {
+    console.log(document.getElementById("itemsKind").value);
+  }
+
 	return (
 		<div>
+			<div className="pagination">
+       	<select className="select-item-kind" name="selectkindOfItems" id="itemsKind"
+       	        onChange={ handleChangeSelect } disabled={isDisable}>
+       	  <option value="characters"> characters </option>
+       	  <option value="comics"> comics </option>
+       	  <option value="creatores"> creatores </option>
+       	  <option value="events"> events </option>
+       	  <option value="series"> series </option>
+       	  <option value="stories"> stories </option>
+       	</select>
+      </div>
 			<TextField value={input} onInput={(e) => setInput(e.target.value)} onKeyDown={handleKeyDown}
 								 className='search-text-field' id="standard-basic" type="search" size='small'/>
 			<Button className='search-button' onClick={() => updateWordToSearch(input)} variant="contained"

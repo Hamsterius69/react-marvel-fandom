@@ -17,6 +17,7 @@ export default {
       offset: args.offset,
 			nameStartsWith: args.nameStartsWith
     }
+		// return axios.get(`${baseEndpoint}/${args.item}`, { params })
 		return axios.get(`${baseEndpoint}/${characters}`, { params })
   }
 }
