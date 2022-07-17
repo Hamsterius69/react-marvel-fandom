@@ -79,7 +79,7 @@ function MainView(props) {
         <div>
           <div className="total-text">
             <Typography variant="h6" component="div">
-              {`Total: ${items.total} Characters`}
+              {`Total: ${items.total}`}
             </Typography>
           </div>
           <div className="hero-card">
@@ -87,7 +87,7 @@ function MainView(props) {
               { items.results.map(hero => 
               <HeroCard 
                 key={ hero.id }
-                name={hero.name}
+                name={hero.title ? hero.title : (hero.fullName ? hero.fullName : hero.name)}
                 description={ hero.description }
                 thumbnail={`${hero.thumbnail.path}.${hero.thumbnail.extension}`  }
               />)}

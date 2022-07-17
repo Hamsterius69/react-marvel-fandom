@@ -26,10 +26,9 @@ function SearchComponent({updateWordToSearch, updatekindItemToSearch, isDisable}
        	        onChange={ handleChangeSelect } disabled={isDisable}>
        	  <option value="characters"> characters </option>
        	  <option value="comics"> comics </option>
-       	  <option value="creatores"> creatores </option>
+       	  <option value="creators"> creators </option>
        	  <option value="events"> events </option>
        	  <option value="series"> series </option>
-       	  <option value="stories"> stories </option>
        	</select>
       </div>
 			<TextField value={input} onInput={(e) => setInput(e.target.value)} onKeyDown={handleKeyDown}
