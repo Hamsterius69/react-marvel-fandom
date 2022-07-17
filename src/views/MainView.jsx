@@ -9,14 +9,15 @@ import api from '../api/marvel';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Pagination from '@mui/material/Pagination';
 import { connect } from 'react-redux';
-import { selectActiveWord } from '../store/itemToSearch/reduce'
+import { selectActiveWord, selectKindItem } from '../store/itemToSearch/reduce'
 
 const mapStateToProps = (state) => {
   return {
     word: selectActiveWord(state),
+    item: selectKindItem(state),
   };
 };
-function MainView(word) {
+function MainView(props) {
   const [items, setItems] = useState(0);
   const [isDisabled, setIsDisable] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
@@ -27,11 +28,11 @@ function MainView(word) {
 
   useEffect(() => {
       getHeroes();
-  }, [word, offset, itemPerPage]);
+  }, [props.word, props.item, offset, itemPerPage]);
 
   const updateTotalPages = (total) => {
     if ( total % itemPerPage !== 0 ) {
-      setTotalPages( Math.trunc(total / itemPerPage))
+      setTotalPages( Math.trunc(total / itemPerPage) + 1);
     } else {
       setTotalPages(total / itemPerPage);
     }
@@ -42,9 +43,10 @@ function MainView(word) {
     const arg = {
       limit: itemPerPage,
       offset: offset,
+      item: props.item,
     };
-    if (word.word) {
-      arg.nameStartsWith = word.word;
+    if (props.word) {
+      arg.nameStartsWith = props.word;
     }
     api.getHeroes(arg).then((response) => {
       setIsDisable(true);
@@ -97,10 +99,10 @@ function MainView(word) {
                         page={page} siblingCount={0}  size="small" disabled={isDisabled}/>
             <select className="select-pagination" name="itemsToView" id="itemsNumber"
                     onChange={ handleChangeItemPerPage } disabled={isDisabled}>
-              <option className='test' value="10">10</option>
-              <option className='test' value="25">25</option>
-              <option className='test' value="50">50</option>
-              <option className='test' value="100">100</option>
+              <option value="10"> 10 </option>
+              <option value="25"> 25 </option>
+              <option value="50"> 50 </option>
+              <option value="100"> 100 </option>
             </select>
           </div>
         </div>

@@ -5,4 +5,11 @@ const updateWordToSearch = (word) => {
   };
 };
 
-export { updateWordToSearch };
+const updatekindItemToSearch = (KindItem) => {
+  return {
+    type: 'MODIFY_ITEM',
+    payload: KindItem,
+  };
+};
+
+export { updateWordToSearch, updatekindItemToSearch };

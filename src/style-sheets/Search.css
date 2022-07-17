@@ -1,6 +1,6 @@
 .search-button {
   margin-left: 1% !important;
-  margin-top: 1px !important;
+  margin-top: 0px;
   display: inline-flex;
 }
 
@@ -8,4 +8,14 @@
   background-color: whitesmoke;
   border-radius: 4px;
   display: flex;
+  margin-top: 10px !important;
+  padding: 0;
+}
+
+.select-item-kind {
+	background-color: whitesmoke;
+  border-radius: 4px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
 }

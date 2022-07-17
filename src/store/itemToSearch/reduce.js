@@ -1,6 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 const initalState = {
     word: '',
+    item: 'characters',
 };
 
 export default (state = initalState, action) => {
@@ -9,8 +10,14 @@ export default (state = initalState, action) => {
       ...state,
       word: action.payload,
     }
+  } else if (action.type === 'MODIFY_ITEM') {
+		return {
+      ...state,
+      item: action.payload,
+    };
   }
 	return state;
 }
 
 export const selectActiveWord = (state) => state.wordReducer.word;
+export const selectKindItem = (state) => state.wordReducer.item;
