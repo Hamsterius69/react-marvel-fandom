@@ -9,18 +9,15 @@ import api from '../api/marvel';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Pagination from '@mui/material/Pagination';
 import { connect } from 'react-redux';
-import { selectActiveWord } from '../store/itemToSearch/reduce'
-// import { selectActiveWord, selectKindItem } from '../store/itemToSearch/reduce'
+import { selectActiveWord, selectKindItem } from '../store/itemToSearch/reduce'
 
 const mapStateToProps = (state) => {
   return {
     word: selectActiveWord(state),
-    // word: selectActiveWord(state.word),
-    // item: selectKindItem(state.item),
+    item: selectKindItem(state),
   };
 };
-// function MainView(word, item) {
-function MainView(word) {
+function MainView(props) {
   const [items, setItems] = useState(0);
   const [isDisabled, setIsDisable] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
@@ -31,11 +28,11 @@ function MainView(word) {
 
   useEffect(() => {
       getHeroes();
-  }, [word, offset, itemPerPage]);
+  }, [props.word, props.item, offset, itemPerPage]);
 
   const updateTotalPages = (total) => {
     if ( total % itemPerPage !== 0 ) {
-      setTotalPages( Math.trunc(total / itemPerPage))
+      setTotalPages( Math.trunc(total / itemPerPage) + 1);
     } else {
       setTotalPages(total / itemPerPage);
     }
@@ -46,10 +43,10 @@ function MainView(word) {
     const arg = {
       limit: itemPerPage,
       offset: offset,
-      // item: item,
+      item: props.item,
     };
-    if (word.word) {
-      arg.nameStartsWith = word.word;
+    if (props.word) {
+      arg.nameStartsWith = props.word;
     }
     api.getHeroes(arg).then((response) => {
       setIsDisable(true);
