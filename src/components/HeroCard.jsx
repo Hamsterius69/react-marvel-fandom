@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import '../style-sheets/HeroCard.css'
 
-function HeroCard({ name ,description, thumbnail }) {
+function HeroCard({ props, name, customClickEvent }) {
   const HtmlTooltip = withStyles((theme) => ({
     tooltip: {
       backgroundColor: '#f5f5f9',
@@ -14,9 +14,10 @@ function HeroCard({ name ,description, thumbnail }) {
     },
   }))(Tooltip);
   return (
-    <HtmlTooltip title={ description ? <div className="tooltip"><h4>{name}</h4><p>{description}</p></div> : <h4>{name}</h4> } placement="top" arrow enterDelay={800} enterNextDelay={800}>
-      <div className='card'>
-        <img className='card-image' src={ thumbnail } alt={ name } />
+    <HtmlTooltip 
+        title={ props.description ? <div className="tooltip"><h4>{name}</h4><p>{props.description}</p></div> : <h4>{name}</h4> } placement="top" arrow enterDelay={400} enterNextDelay={400}>
+      <div className='card' onClick={() => customClickEvent(props) }>
+        <img className='card-image' src={ `${props.thumbnail.path}.${props.thumbnail.extension}` } alt={ name } />
         <div className='name-label'>
           { name }
         </div>

@@ -16,7 +16,6 @@ function SearchComponent({updateWordToSearch, updatekindItemToSearch, isDisable}
 
 	const handleChangeSelect = () => {
     updatekindItemToSearch(document.getElementById("itemsKind").value)
-		// console.log(document.getElementById("itemsKind").value);
 	}
 
 	return (

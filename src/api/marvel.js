@@ -23,5 +23,21 @@ export default {
     }
 
 		return axios.get(`${baseEndpoint}/${args.item}`, { params })
+  },
+  getDetails (args) {
+    const params = {
+      apikey: apikey,
+      ts: ts,
+      hash: hash,
+      limit: args.limit,
+      offset: args.offset,
+    }
+    if (args.item !== characters) {
+      params.titleStartsWith = args.nameStartsWith
+    } else {
+      params.nameStartsWith = args.nameStartsWith
+    }
+
+		return axios.get(`${baseEndpoint}/${args.item}/${args.id}/${args.type}`, { params })
   }
 }
