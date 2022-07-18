@@ -21,16 +21,33 @@
 	background-color: #282c34;
 }
 
-.test {
-	display: none !important;
-	background-color: red !important;
-	color: green !important;
-	display: inline-block !important;
-}
-
 .linear-progress {
 	width: 50%;
 	margin-top: 10px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.modal-links {
+	display: flex;
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.modal-links a {
+	margin: 15px;
+	color: white;
+}
+
+.image-description {
+	display: inline-flex;
+}
+
+.image-description .description {
+	margin-left: 14px;
+	font-family: Verdana, sans-serif;
+	text-align: justify;
+	text-justify: inter-word;
 }
