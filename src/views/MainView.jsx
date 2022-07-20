@@ -1,25 +1,26 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router'
 import '../style-sheets/MainView.css';
 import Banner from '../components/Banner';
+import BunchCards from '../components/BunchCards';
 import SearchComponent from '../components/Search';
-import Typography from '@mui/material/Typography';
-import HeroCard from '../components/HeroCard';
 import api from '../api/marvel';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import Pagination from '@mui/material/Pagination';
 import { connect } from 'react-redux';
 import { selectActiveWord, selectKindItem } from '../store/itemToSearch/reduce'
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
+import { updateSelectedItem } from '../store/itemToSearch/actions'
+// import Box from '@mui/material/Box';
+// import Modal from '@mui/material/Modal';
 
 const mapStateToProps = (state) => {
   return {
     word: selectActiveWord(state),
     item: selectKindItem(state),
+    updateSelectedItem: updateSelectedItem,
   };
 };
-
+/*
 const style = {
   position: 'absolute',
   top: '50%',
@@ -33,16 +34,17 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-
-function MainView(props) {
+*/
+function MainView( props ) {
   const [items, setItems] = useState(0);
   const [isDisabled, setIsDisable] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
   const [itemPerPage, setItemPerPage] = useState(10);
   const [page, setPage] = useState(1);
   const [offset, setOffset] = useState(0);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [currentItemSelected, setCurrentItemSelected] = useState(null);
+  // const [modalOpen, setModalOpen] = useState(false);
+  // const [currentItemSelected, setCurrentItemSelected] = useState(null); //delete
+  const navigate = useNavigate();
 
   const linearProgress = isDisabled ? <LinearProgress /> : ''
 
@@ -51,8 +53,10 @@ function MainView(props) {
   }, [props.word, props.item, offset, itemPerPage]);
 
   const handleModalOpen = (heroData) => {
-    setCurrentItemSelected(heroData);
-    setModalOpen(true);
+    // setCurrentItemSelected(heroData); // deleted
+    props.updateSelectedItem(heroData);
+    navigate('Detail');
+    // setModalOpen(true);
   }
 
   const updateTotalPages = (total) => {
@@ -98,9 +102,9 @@ function MainView(props) {
   return (
     <div className='main-view'>
       <Banner />
-      <SearchComponent handleClick={ getHeroes } isDisable={ isDisabled }/>
+      <SearchComponent handleClick={ getHeroes } isDisable={ isDisabled } word={ props.word } optionSelected={ props.item }/>
       <div className='linear-progress'>{ linearProgress }</div>
-      {items ? (
+      {/*items ? (
         <div>
           <div className="total-text">
             <Typography variant="h6" component="div">
@@ -131,7 +135,15 @@ function MainView(props) {
             </select>
           </div>
         </div>
+      ) : '' */}
+      {items ? (
+        <div>
+          <BunchCards items={items} totalPages={totalPages} isDisabled={isDisabled} page={page}
+                      handleChangeItemPerPage={handleChangeItemPerPage} handleChangePagination={handleChangePagination}
+                      handleModalOpen={handleModalOpen} />
+        </div>  
       ) : ''}
+      {/*
       <Modal
         keepMounted
         open={modalOpen}
@@ -151,17 +163,18 @@ function MainView(props) {
             </Typography>
           </div>
           <div className='modal-links'>
-          { currentItemSelected.urls.map(item => 
-            <div key={item.id}>
-              <a target="_blank" href={item.url} rel="noreferrer"> {item.type} </a>
-            </div>
-          )}
+            { currentItemSelected.urls.map(item => 
+              <div key={item.id}>
+                <a target="_blank" key={`link-${item.id}`} href={item.url} rel="noreferrer"> {item.type} </a>
+              </div>
+            )}
           </div>
         </Box> : <div> Information not available </div>
       }
       </Modal>
+      */}
     </div>
   );
 }
 
-export default connect(mapStateToProps)(MainView);
+export default connect(mapStateToProps, { updateSelectedItem })(MainView);
