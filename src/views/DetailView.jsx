@@ -7,7 +7,6 @@ import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { connect } from 'react-redux';
-import { Img } from 'react-image';
 
 const mapStateToProps = (state) => {
   return {
@@ -35,7 +34,7 @@ function DetailView(props) {
             { props.item.title ? props.item.title : (props.item.fullName ? props.item.fullName : props.item.name) }
           </Typography>
           <div className='detail-description'>
-            <Img className='detail-image' src={[`${props.item.thumbnail.path}.${props.item.thumbnail.extension}`, require('../assets/images/image_not_available.jpeg')]} alt={ props.item.thumbnail.path } />
+          <img src={`${props.item.thumbnail.path}.${props.item.thumbnail.extension}`} onError={(e)=>{e.target.onerror = null; e.target.src=require('../assets/images/image_not_available.jpeg')}} className='card-image' alt='mailImageDetail' />
             <Typography className="description" id="keep-mounted-modal-description" sx={{ mt: 2 }}>
               { props.item.description ? props.item.description : 'There is not description available'}
             </Typography>

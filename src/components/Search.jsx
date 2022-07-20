@@ -40,9 +40,9 @@ function SearchComponent({updateWordToSearch, updatekindItemToSearch, isDisable,
       </select>
     </div>
 	  <TextField value={input} onInput={(e) => setInput(e.target.value)} onKeyDown={handleKeyDown}
-	  			 className='search-text-field' id="standard-basic" type="search" size='small'/>
+	  			     className='search-text-field' id="standard-basic" type="search" size='small'/>
 	  <Button className='search-button' onClick={() => updateWordToSearch(input)} variant="contained"
-	  		  color="primary" endIcon={<Search />} disabled={isDisable}>
+	  		    color="primary" endIcon={<Search />} disabled={isDisable}>
 	  	Search
 	  </Button>
 	</div>
