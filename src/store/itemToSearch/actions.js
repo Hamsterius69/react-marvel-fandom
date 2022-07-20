@@ -12,4 +12,11 @@ const updatekindItemToSearch = (KindItem) => {
   };
 };
 
-export { updateWordToSearch, updatekindItemToSearch };
+const updateSelectedItem = (Item) => {
+  return {
+    type: 'MODIFY_SELECTED_ITEM',
+    payload: Item,
+  };
+};
+
+export { updateWordToSearch, updatekindItemToSearch, updateSelectedItem };

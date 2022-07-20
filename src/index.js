@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import Detail from './views/Detail';
+import MainView from './views/MainView';
+import DetailView from './views/DetailView';
 import { Provider } from 'react-redux';
 import store from './store';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
@@ -13,9 +13,9 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={ <App /> }></Route>
-          <Route path="/Detail" element={ <Detail/> }></Route>
-          <Route path="*" element={ <Navigate to="/" />}></Route>
+          <Route path="/" element={ <MainView /> }></Route>
+          <Route path="/Detail" element={ <DetailView /> }></Route>
+          <Route path="*" element={ <Navigate replace to="/" />}></Route>
         </Routes>
       </BrowserRouter>
     </Provider>

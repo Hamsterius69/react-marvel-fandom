@@ -1,0 +1,35 @@
+.detail-view {
+  text-align: center;
+  min-height: 100vh;
+  background-color: #282c34;
+  color: white;
+  padding: 50px;
+}
+
+.detail-links {
+	display: flex;
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.detail-links a {
+	margin: 15px;
+	color: white;
+}
+
+.remove-center {
+  display: flex !important;
+}
+
+.detail-image {
+  width: 50%;
+  margin-right: 20px;
+}
+
+.detail-description .description {
+	font-family: Verdana, sans-serif;
+	text-align: justify;
+	text-justify: inter-word;
+}

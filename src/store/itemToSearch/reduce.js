@@ -2,22 +2,31 @@
 const initalState = {
     word: '',
     item: 'characters',
+    selectedItem: null,
 };
 
 export default (state = initalState, action) => {
-  if (action.type === 'MODIFY_WORD') {
-		return {
-      ...state,
-      word: action.payload,
-    }
-  } else if (action.type === 'MODIFY_ITEM') {
-		return {
-      ...state,
-      item: action.payload,
-    };
+  switch(action.type) {
+    case 'MODIFY_WORD':
+      return {
+        ...state,
+        word: action.payload,
+      }
+    case 'MODIFY_ITEM':
+      return {
+        ...state,
+        item: action.payload,
+      };
+    case 'MODIFY_SELECTED_ITEM':
+      return {
+        ...state,
+        selectedItem: action.payload,
+      };
+    default:
+      return state
   }
-	return state;
 }
 
-export const selectActiveWord = (state) => state.wordReducer.word;
-export const selectKindItem = (state) => state.wordReducer.item;
+export const selectActiveWord = (state) => state.dataReducer.word;
+export const selectKindItem = (state) => state.dataReducer.item;
+export const selectItem = (state) => state.dataReducer.selectedItem;

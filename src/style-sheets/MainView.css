@@ -1,53 +1,36 @@
+.main-view {
+  text-align: center;
+  min-height: 100vh;
+  background-color: #282c34;
+  color: white;
+}
+
 .hero-card {
-	width: 90%;
-	display: flex;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
+  width: 90%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .total-text {
-	margin-top: 10px;
-	display: inline-flex;
+  margin-top: 10px;
+  display: inline-flex;
 }
 
 .pagination {
-	margin: 20px;
-	margin-top: 10px;
-	display: inline-flex;
+  margin: 20px;
+  margin-top: 10px;
+  display: inline-flex;
 }
 
 .select-pagination {
-	background-color: #282c34;
+  background-color: #282c34;
 }
 
 .linear-progress {
-	width: 50%;
-	margin-top: 10px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.modal-links {
-	display: flex;
-	width: 200px;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-}
-
-.modal-links a {
-	margin: 15px;
-	color: white;
-}
-
-.image-description {
-	display: inline-flex;
-}
-
-.image-description .description {
-	margin-left: 14px;
-	font-family: Verdana, sans-serif;
-	text-align: justify;
-	text-justify: inter-word;
+  width: 50%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
