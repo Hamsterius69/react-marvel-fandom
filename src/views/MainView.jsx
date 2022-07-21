@@ -104,38 +104,6 @@ function MainView( props ) {
       <Banner />
       <SearchComponent handleClick={ getHeroes } isDisable={ isDisabled } word={ props.word } optionSelected={ props.item }/>
       <div className='linear-progress'>{ linearProgress }</div>
-      {/*items ? (
-        <div>
-          <div className="total-text">
-            <Typography variant="h6" component="div">
-              {`Total: ${items.total}`}
-            </Typography>
-          </div>
-          <div className="hero-card">
-            <div>
-              { items.results.map(hero => 
-              <HeroCard
-                key={ hero.id }
-                props={ hero }
-                name={hero.title ? hero.title : (hero.fullName ? hero.fullName : hero.name)}
-                customClickEvent={ handleModalOpen }
-              />)}
-            </div>
-          </div>
-          <div className='linear-progress'>{ linearProgress }</div>
-          <div className="pagination">
-            <Pagination count={ totalPages } showFirstButton showLastButton color='primary' onChange={ handleChangePagination }
-                        page={page} siblingCount={0}  size="small" disabled={isDisabled}/>
-            <select className="select-pagination" name="itemsToView" id="itemsNumber"
-                    onChange={ handleChangeItemPerPage } disabled={isDisabled}>
-              <option value="10"> 10 </option>
-              <option value="25"> 25 </option>
-              <option value="50"> 50 </option>
-              <option value="100"> 100 </option>
-            </select>
-          </div>
-        </div>
-      ) : '' */}
       {items ? (
         <div>
           <BunchCards items={items} totalPages={totalPages} isDisabled={isDisabled} page={page}

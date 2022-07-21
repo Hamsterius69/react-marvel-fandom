@@ -32,11 +32,6 @@ export default {
       limit: args.limit,
       offset: args.offset,
     }
-    if (args.item !== characters) {
-      params.titleStartsWith = args.nameStartsWith
-    } else {
-      params.nameStartsWith = args.nameStartsWith
-    }
 
 		return axios.get(`${baseEndpoint}/${args.item}/${args.id}/${args.type}`, { params })
   }

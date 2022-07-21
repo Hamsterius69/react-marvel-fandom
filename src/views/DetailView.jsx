@@ -1,27 +1,31 @@
-// import React, { useState, useEffect } from 'react';
-import React, { useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React from 'react';
 import { useNavigate } from 'react-router'
 import '../style-sheets/DetailView.css';
-import { selectActiveWord, selectItem } from '../store/itemToSearch/reduce';
+import { selectActiveWord, selectItem, selectKindItem } from '../store/itemToSearch/reduce';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import BunchCardsDetails from '../components/BunchCardsDetails';
 import { connect } from 'react-redux';
+
 
 const mapStateToProps = (state) => {
   return {
     word: selectActiveWord(state),
     item: selectItem(state),
+    kindItem: selectKindItem(state)
   };
 };
 
 function DetailView(props) {
+
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log(props.word);
-    console.log(props.item);
-  }, [props.item, props.word]);
+  const handleModalOpen = (heroData) => {
+    console.log('open modal');
+    // setModalOpen(true);
+  }
 
   return (
     <div className='detail-view'>
@@ -30,9 +34,9 @@ function DetailView(props) {
       </Button>
       { props.item ?
         <div>
-          <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
+          <h1>
             { props.item.title ? props.item.title : (props.item.fullName ? props.item.fullName : props.item.name) }
-          </Typography>
+          </h1>
           <div className='detail-description'>
           <img src={`${props.item.thumbnail.path}.${props.item.thumbnail.extension}`} onError={(e)=>{e.target.onerror = null; e.target.src=require('../assets/images/image_not_available.jpeg')}} className='card-image' alt='mailImageDetail' />
             <Typography className="description" id="keep-mounted-modal-description" sx={{ mt: 2 }}>
@@ -40,6 +44,10 @@ function DetailView(props) {
             </Typography>
           </div>
           <h2 className="remove-center">Comics</h2>
+          <div>
+            <BunchCardsDetails itemId={props.item.id} kindItem={props.kindItem} itemType='comics' 
+                               handleModalOpen={handleModalOpen} />
+          </div>  
           <div className='detail-links'>
             { props.item.urls.map((item, index) => 
               <div key={index}>
