@@ -6,6 +6,8 @@ const apikey = 'dcbf4a1e2123709c8ce36a9fc605f133';
 const ts = '1';
 const hash = '2470120802de5f82099fc0416778a6e5';
 const characters = 'characters';
+const creators = 'creators';
+const events = 'events';
 
 export default {
   getHeroes (args) {
@@ -16,12 +18,14 @@ export default {
       limit: args.limit,
       offset: args.offset,
     }
-    if (args.item !== characters) {
+    console.log(args.item);
+    if (args.item !== characters && args.item !== creators && args.item !== events) {
       params.titleStartsWith = args.nameStartsWith
     } else {
       params.nameStartsWith = args.nameStartsWith
     }
 
+    console.log(params);
 		return axios.get(`${baseEndpoint}/${args.item}`, { params })
   },
   getDetails (args) {

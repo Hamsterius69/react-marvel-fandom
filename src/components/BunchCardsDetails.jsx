@@ -63,35 +63,38 @@ function BunchCardsDetails( {itemId, kindItem, itemType, handleModalOpen} ) {
 
 	return (
     <div>
-      <div className="">
+      <div className="remove-center">
         <h2>
-          {`${General.capitalizeFirstLetter(itemType)}: ${items.total}`}
+          {`${General.capitalizeFirstLetter(itemType)}: ${ items.total !== undefined ? items.total : 0 }`}
         </h2>
       </div>
-      <div className="hero-card">
-        { items ? 
+      <div> { items.total > 0 ? 
         <div>
-          { items.results.map(hero => 
-          <HeroCard
-            key={ hero.id }
-            props={ hero }
-            name={hero.title ? hero.title : (hero.fullName ? hero.fullName : hero.name)}
-            customClickEvent={ () => handleModalOpen(hero) }
-          />)}
+          <div className="hero-card">
+            <div>
+              { items.results.map(hero => 
+              <HeroCard
+                key={ hero.id }
+                props={ hero }
+                name={hero.title ? hero.title : (hero.fullName ? hero.fullName : hero.name)}
+                customClickEvent={ () => handleModalOpen(hero) }
+              />)}
+            </div>
+          </div>
+          <div className='linear-progress'>{ linearProgress }</div>
+          <div className="pagination">
+            <Pagination count={ totalPages } showFirstButton showLastButton color='primary' onChange={ handleChangePagination }
+                        page={page} siblingCount={0}  size="small" disabled={isDisabled}/>
+            <select className="select-pagination" name="itemsToView" id="itemsNumber"
+                    onChange={ handleChangeItemPerPage } disabled={isDisabled}>
+              <option value="10"> 10 </option>
+              <option value="25"> 25 </option>
+              <option value="50"> 50 </option>
+              <option value="100"> 100 </option>
+            </select>
+          </div>
         </div>
         : ''}
-      </div>
-      <div className='linear-progress'>{ linearProgress }</div>
-      <div className="pagination">
-        <Pagination count={ totalPages } showFirstButton showLastButton color='primary' onChange={ handleChangePagination }
-                    page={page} siblingCount={0}  size="small" disabled={isDisabled}/>
-        <select className="select-pagination" name="itemsToView" id="itemsNumber"
-                onChange={ handleChangeItemPerPage } disabled={isDisabled}>
-          <option value="10"> 10 </option>
-          <option value="25"> 25 </option>
-          <option value="50"> 50 </option>
-          <option value="100"> 100 </option>
-        </select>
       </div>
     </div>
   );
