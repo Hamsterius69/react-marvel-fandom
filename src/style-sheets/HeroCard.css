@@ -1,4 +1,4 @@
-.card {
+.hero-card {
 	display: inline-block;
 	margin: 5px 20px 5px;
 	border-radius: 5px;
@@ -6,7 +6,7 @@
 	transition-duration: 0.4s;
 }
 
-.card:hover {
+.hero-card:hover {
   cursor: pointer;
 	border-radius: 50%;
   transform:rotate(360deg);
@@ -14,19 +14,19 @@
   -webkit-transform:rotate(360deg);
 }
 
-.card:hover > .card-image {
+.hero-card:hover > .hero-card__image {
 	border-radius: 50%;
 	transform:rotate(360deg);
   -ms-transform:rotate(360deg);
   -webkit-transform:rotate(360deg);
 }
 
-.card:hover > .name-label {
+.hero-card:hover > .hero-card__name-label {
 	text-indent: 100%;
 	opacity: 0;
 }
 
-.card-image {
+.hero-card__image {
 	height: 250px;
 	width: 250px;
 	border-radius: 5px;
@@ -34,7 +34,7 @@
 	transition-duration: 0.4s;
 }
 
-.name-label {
+.hero-card__name-label {
   height: 34px;
   width: 250px;
   padding-top: 10px;
@@ -52,12 +52,7 @@
   transition-duration: 0.4s;
 }
 
-.text-name {
-	margin: 0;
-	padding: 0;
-}
-
-.tooltip {
+.hero-card__tooltip {
 	font-family: Verdana, sans-serif;
 	text-align: justify;
 	text-justify: inter-word;
