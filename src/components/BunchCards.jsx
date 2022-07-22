@@ -3,6 +3,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import Pagination from '@mui/material/Pagination';
 import HeroCard from './HeroCard';
 import Typography from '@mui/material/Typography';
+import '../style-sheets/BunchCards.css';
 
 function BunchCards( {items, totalPages, isDisabled, page, handleChangeItemPerPage, handleChangePagination, handleModalOpen} ) {
 	const linearProgress = isDisabled ? <LinearProgress /> : ''
@@ -14,7 +15,7 @@ function BunchCards( {items, totalPages, isDisabled, page, handleChangeItemPerPa
           {`Total: ${items.total}`}
         </Typography>
       </div>
-      <div className="hero-card">
+      <div>
         <div>
           { items.results.map(hero => 
           <HeroCard

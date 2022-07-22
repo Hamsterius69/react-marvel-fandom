@@ -5,6 +5,7 @@ import Pagination from '@mui/material/Pagination';
 import HeroCard from './HeroCard';
 import api from '../api/marvel';
 import General from '../mixins/GeneralFunctions'
+import '../style-sheets/BunchCards.css';
 
 function BunchCardsDetails( {itemId, kindItem, itemType} ) {
 

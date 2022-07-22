@@ -1,0 +1,29 @@
+.hero-card {
+  width: 90%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.total-text {
+  margin-top: 10px;
+  display: inline-flex;
+}
+
+.pagination {
+  margin: 20px;
+  margin-top: 10px;
+  display: inline-flex;
+}
+
+.select-pagination {
+  background-color: #282c34;
+}
+
+.linear-progress {
+  width: 50%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}

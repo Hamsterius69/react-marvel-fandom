@@ -83,7 +83,7 @@ function MainView( props ) {
     <div className='main-view'>
       <Banner />
       <SearchComponent handleClick={ getHeroes } isDisable={ isDisabled } word={ props.word } optionSelected={ props.item }/>
-      <div className='linear-progress'>{ linearProgress }</div>
+      <div className='main-view__linear-progress'>{ linearProgress }</div>
       {items ? (
         <div >
           <BunchCards items={items} totalPages={totalPages} isDisabled={isDisabled} page={page}
