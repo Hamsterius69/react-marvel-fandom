@@ -10,7 +10,7 @@ function BunchCards( {items, totalPages, isDisabled, page, handleChangeItemPerPa
 
 	return (
     <div>
-      <div className="total-text">
+      <div className="bunch-cards__total-text">
         <Typography variant="h6" component="div">
           {`Total: ${items.total}`}
         </Typography>
@@ -26,11 +26,11 @@ function BunchCards( {items, totalPages, isDisabled, page, handleChangeItemPerPa
           />)}
         </div>
       </div>
-      <div className='linear-progress'>{ linearProgress }</div>
-      <div className="pagination">
+      <div className='bunch-cards__linear-progress'>{ linearProgress }</div>
+      <div className="bunch-cards__pagination">
         <Pagination count={ totalPages } showFirstButton showLastButton color='primary' onChange={ handleChangePagination }
                     page={page} siblingCount={0}  size="small" disabled={isDisabled}/>
-        <select className="select-pagination" name="itemsToView" id="itemsNumber"
+        <select className="bunch-cards__select-pagination" name="itemsToView" id="itemsNumber"
                 onChange={ handleChangeItemPerPage } disabled={isDisabled}>
           <option value="10"> 10 </option>
           <option value="25"> 25 </option>

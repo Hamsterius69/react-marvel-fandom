@@ -6,6 +6,7 @@ function Banner() {
 
   useEffect(() => {
     const handleResize = () => {
+      console.log('entro al banner resize')
         if (window.innerWidth > 800) {
           setImageBanner('comicBanner.jpeg');
         } else {

@@ -51,10 +51,11 @@ function DetailView(props) {
         break;
     }
     const handleResize = () => {
+      console.log('entro al resize');
       if (window.innerWidth > 800) {
-        setIsMobile(false)
+        setIsMobile(false);
       } else {
-        setIsMobile(true)
+        setIsMobile(true);
       }
     }
     window.addEventListener('resize', handleResize)

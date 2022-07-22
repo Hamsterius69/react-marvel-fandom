@@ -6,22 +6,22 @@
   text-align: center;
 }
 
-.total-text {
+.bunch-cards__total-text {
   margin-top: 10px;
   display: inline-flex;
 }
 
-.pagination {
+.bunch-cards__pagination {
   margin: 20px;
   margin-top: 10px;
   display: inline-flex;
 }
 
-.select-pagination {
+.bunch-cards__select-pagination {
   background-color: #282c34;
 }
 
-.linear-progress {
+.bunch-cards__linear-progress {
   width: 50%;
   margin-top: 10px;
   margin-left: auto;

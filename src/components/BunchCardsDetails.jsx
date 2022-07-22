@@ -71,7 +71,7 @@ function BunchCardsDetails( {itemId, kindItem, itemType} ) {
       </div>
       <div> { items.total > 0 ? 
         <div>
-          <div className="hero-card">
+          <div>
             <div>
               { items.results.map(hero => 
               <HeroCard
@@ -82,11 +82,11 @@ function BunchCardsDetails( {itemId, kindItem, itemType} ) {
               />)}
             </div>
           </div>
-          <div className='linear-progress'>{ linearProgress }</div>
-          <div className="pagination">
+          <div className='bunch-cards__linear-progress'>{ linearProgress }</div>
+          <div className="bunch-cards__pagination">
             <Pagination count={ totalPages } showFirstButton showLastButton color='primary' onChange={ handleChangePagination }
                         page={page} siblingCount={0}  size="small" disabled={isDisabled}/>
-            <select className="select-pagination" name="itemsToView" id="itemsNumber"
+            <select className="bunch-cards__select-pagination" name="itemsToView" id="itemsNumber"
                     onChange={ handleChangeItemPerPage } disabled={isDisabled}>
               <option value="10"> 10 </option>
               <option value="25"> 25 </option>
