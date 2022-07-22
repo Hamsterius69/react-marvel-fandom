@@ -50,17 +50,18 @@ function DetailView(props) {
       default:
         break;
     }
-    const handleResize = () => {
-      console.log('entro al resize');
-      if (window.innerWidth > 800) {
-        setIsMobile(false);
-      } else {
-        setIsMobile(true);
-      }
-    }
+    handleResize();
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, []);
+
+  const handleResize = () => {
+    if (window.innerWidth > 800) {
+      setIsMobile(false);
+    } else {
+      setIsMobile(true);
+    }
+  }
 
   return (
     <div className='detail-view'>

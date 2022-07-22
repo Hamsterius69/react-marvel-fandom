@@ -5,7 +5,7 @@ import HeroCard from './HeroCard';
 import Typography from '@mui/material/Typography';
 import '../style-sheets/BunchCards.css';
 
-function BunchCards( {items, totalPages, isDisabled, page, handleChangeItemPerPage, handleChangePagination, handleModalOpen} ) {
+function BunchCards( {items, totalPages, isDisabled, page, handleChangeItemPerPage, handleChangePagination, handleModalOpen, type} ) {
 	const linearProgress = isDisabled ? <LinearProgress /> : ''
 
 	return (
@@ -21,8 +21,9 @@ function BunchCards( {items, totalPages, isDisabled, page, handleChangeItemPerPa
           <HeroCard
             key={ hero.id }
             props={ hero }
-            name={hero.title ? hero.title : (hero.fullName ? hero.fullName : hero.name)}
+            name={ hero.title ? hero.title : (hero.fullName ? hero.fullName : hero.name) }
             customClickEvent={ () => handleModalOpen(hero) }
+            type={ type }
           />)}
         </div>
       </div>

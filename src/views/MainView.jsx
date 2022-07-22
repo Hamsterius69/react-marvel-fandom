@@ -88,7 +88,7 @@ function MainView( props ) {
         <div >
           <BunchCards items={items} totalPages={totalPages} isDisabled={isDisabled} page={page}
                       handleChangeItemPerPage={handleChangeItemPerPage} handleChangePagination={handleChangePagination}
-                      handleModalOpen={handleModalOpen} />
+                      handleModalOpen={handleModalOpen} type={ props.item } />
         </div>  
       ) : ''}
     </div>

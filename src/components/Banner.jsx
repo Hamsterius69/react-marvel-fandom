@@ -5,17 +5,18 @@ function Banner() {
   const [imageBanner, setImageBanner] = useState('comicBanner.jpeg')
 
   useEffect(() => {
-    const handleResize = () => {
-      console.log('entro al banner resize')
-        if (window.innerWidth > 800) {
-          setImageBanner('comicBanner.jpeg');
-        } else {
-          setImageBanner('Universo_Marvel.webp');
-        }
-    }
+    handleResize();
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  const handleResize = () => {
+      if (window.innerWidth > 800) {
+        setImageBanner('comicBanner.jpeg');
+      } else {
+        setImageBanner('Universo_Marvel.webp');
+      }
+  }
 
   return (
     <div className='banner'>
