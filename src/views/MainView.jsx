@@ -10,8 +10,6 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import { connect } from 'react-redux';
 import { selectActiveWord, selectKindItem } from '../store/itemToSearch/reduce'
 import { updateSelectedItem } from '../store/itemToSearch/actions'
-// import Box from '@mui/material/Box';
-// import Modal from '@mui/material/Modal';
 
 const mapStateToProps = (state) => {
   return {
@@ -20,21 +18,7 @@ const mapStateToProps = (state) => {
     updateSelectedItem: updateSelectedItem,
   };
 };
-/*
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: '80%',
-  bgcolor: '#282c34',
-  border: '2px solid #000',
-  borderRadius: '6px',
-  color: 'white',
-  boxShadow: 24,
-  p: 4,
-};
-*/
+
 function MainView( props ) {
   const [items, setItems] = useState(0);
   const [isDisabled, setIsDisable] = useState(false);
@@ -42,8 +26,6 @@ function MainView( props ) {
   const [itemPerPage, setItemPerPage] = useState(10);
   const [page, setPage] = useState(1);
   const [offset, setOffset] = useState(0);
-  // const [modalOpen, setModalOpen] = useState(false);
-  // const [currentItemSelected, setCurrentItemSelected] = useState(null); //delete
   const navigate = useNavigate();
 
   const linearProgress = isDisabled ? <LinearProgress /> : ''
@@ -53,10 +35,8 @@ function MainView( props ) {
   }, [props.word, props.item, offset, itemPerPage]);
 
   const handleModalOpen = (heroData) => {
-    // setCurrentItemSelected(heroData); // deleted
     props.updateSelectedItem(heroData);
     navigate('Detail');
-    // setModalOpen(true);
   }
 
   const updateTotalPages = (total) => {
@@ -105,42 +85,12 @@ function MainView( props ) {
       <SearchComponent handleClick={ getHeroes } isDisable={ isDisabled } word={ props.word } optionSelected={ props.item }/>
       <div className='linear-progress'>{ linearProgress }</div>
       {items ? (
-        <div>
+        <div >
           <BunchCards items={items} totalPages={totalPages} isDisabled={isDisabled} page={page}
                       handleChangeItemPerPage={handleChangeItemPerPage} handleChangePagination={handleChangePagination}
                       handleModalOpen={handleModalOpen} />
         </div>  
       ) : ''}
-      {/*
-      <Modal
-        keepMounted
-        open={modalOpen}
-        onClose={() => setModalOpen(false)}
-        aria-labelledby="keep-mounted-modal-title"
-        aria-describedby="keep-mounted-modal-description"
-      >
-      { currentItemSelected ?
-        <Box sx={style}>
-          <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
-            { currentItemSelected.title ? currentItemSelected.title : (currentItemSelected.fullName ? currentItemSelected.fullName : currentItemSelected.name) }
-          </Typography>
-          <div className='image-description'>
-            <img className='card-image' src={ `${currentItemSelected.thumbnail.path}.${currentItemSelected.thumbnail.extension}` } alt={ currentItemSelected.thumbnail.path } />
-            <Typography className="description" id="keep-mounted-modal-description" sx={{ mt: 2 }}>
-              { currentItemSelected.description }
-            </Typography>
-          </div>
-          <div className='modal-links'>
-            { currentItemSelected.urls.map(item => 
-              <div key={item.id}>
-                <a target="_blank" key={`link-${item.id}`} href={item.url} rel="noreferrer"> {item.type} </a>
-              </div>
-            )}
-          </div>
-        </Box> : <div> Information not available </div>
-      }
-      </Modal>
-      */}
     </div>
   );
 }

@@ -18,15 +18,13 @@ export default {
       limit: args.limit,
       offset: args.offset,
     }
-    console.log(args.item);
     if (args.item !== characters && args.item !== creators && args.item !== events) {
       params.titleStartsWith = args.nameStartsWith
     } else {
       params.nameStartsWith = args.nameStartsWith
     }
 
-    console.log(params);
-		return axios.get(`${baseEndpoint}/${args.item}`, { params })
+    return axios.get(`${baseEndpoint}/${args.item}`, { params })
   },
   getDetails (args) {
     const params = {

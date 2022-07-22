@@ -12,6 +12,6 @@ code {
     monospace;
 }
 
-.remove-center {
+.index__any-element--remove-display-center {
   display: flex !important;
 }

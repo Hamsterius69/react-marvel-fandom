@@ -6,13 +6,6 @@ import Typography from '@mui/material/Typography';
 
 function BunchCards( {items, totalPages, isDisabled, page, handleChangeItemPerPage, handleChangePagination, handleModalOpen} ) {
 	const linearProgress = isDisabled ? <LinearProgress /> : ''
-  /*
-	const handleModalOpen = (heroData) => {
-    console.log('Open modal');
-		console.log(heroData);
-    console.log('********');
-  }
-	*/
 
 	return (
     <div>

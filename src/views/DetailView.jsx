@@ -21,6 +21,7 @@ const mapStateToProps = (state) => {
 
 function DetailView(props) {
   const [detailsList, setDetailsList] = useState([]);
+  const [isMobile, setIsMobile] = useState([false]);
 
   const navigate = useNavigate();
   const characterDetails = ['comics', 'events', 'series'];
@@ -48,17 +49,21 @@ function DetailView(props) {
         break;
       default:
         break;
-    }  
+    }
+    const handleResize = () => {
+      if (window.innerWidth > 800) {
+        setIsMobile(false)
+      } else {
+        setIsMobile(true)
+      }
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, []);
-
-  const handleModalOpen = (heroData) => {
-    console.log('open modal');
-    // setModalOpen(true);
-  }
 
   return (
     <div className='detail-view'>
-      <Button onClick={() => navigate(-1)} className="remove-center" size="large" startIcon={<ArrowBackIcon />}>
+      <Button onClick={() => navigate(-1)} className="index__any-element--remove-display-center" size="large" startIcon={<ArrowBackIcon />}>
         Back
       </Button>
       { props.item ?
@@ -66,18 +71,17 @@ function DetailView(props) {
           <h1>
             { props.item.title ? props.item.title : (props.item.fullName ? props.item.fullName : props.item.name) }
           </h1>
-          <div className='detail-description'>
-          <img src={`${props.item.thumbnail.path}.${props.item.thumbnail.extension}`} onError={(e)=>{e.target.onerror = null; e.target.src=require('../assets/images/image_not_available.jpeg')}} className='card-image' alt='mailImageDetail' />
-            <Typography className="description" id="keep-mounted-modal-description" sx={{ mt: 2 }}>
+          <div className={isMobile ? '' : 'detail-view__description' }>
+            <img src={`${props.item.thumbnail.path}.${props.item.thumbnail.extension}`} onError={(e)=>{e.target.onerror = null; e.target.src=require('../assets/images/image_not_available.jpeg')}} className='detail-view__main-image' alt='mailImageDetail' />
+            <Typography className="detail-view__text" id="keep-mounted-modal-description" sx={{ mt: 2 }}>
               { props.item.description ? props.item.description : 'There is not description available'}
             </Typography>
           </div>
           <div> { detailsList.map((detailType, index) => 
             <BunchCardsDetails itemId={props.item.id} key={`${detailType}-${index}`} kindItem={ props.kindItem } itemType={ detailType } 
-                               handleModalOpen={ handleModalOpen } 
             />)}
           </div>  
-          <div className='detail-links'>
+          <div className='detail-view__links'>
             { props.item.urls.map((item, index) => 
               <div key={index}>
                 <a target="_blank" href={item.url} rel="noreferrer"> {item.type} </a>

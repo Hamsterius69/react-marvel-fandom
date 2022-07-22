@@ -6,26 +6,32 @@
   padding: 50px;
 }
 
-.detail-links {
-	display: flex;
-	width: 200px;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
+.detail-view__links {
+  display: flex;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
-.detail-links a {
-	margin: 15px;
-	color: white;
+.detail-view__links a {
+  margin: 15px;
+  color: white;
+  font-family: Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
-.detail-image {
+.detail-view__main-image {
   width: 50%;
   margin-right: 20px;
 }
 
-.detail-description .description {
-	font-family: Verdana, sans-serif;
-	text-align: justify;
-	text-justify: inter-word;
+.detail-view__description {
+  display: inline-flex;
+}
+
+.detail-view__description .detail-view__text {
+  font-family: Verdana, sans-serif;
+  text-align: justify;
+  text-justify: inter-word;
 }

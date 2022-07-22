@@ -18,7 +18,7 @@ function Banner() {
 
   return (
     <div className='banner'>
-      <img className='image-banner' src={require(`../assets/images/${imageBanner}`)} alt='marvel'/>
+      <img className='banner__image' src={require(`../assets/images/${imageBanner}`)} alt='marvel'/>
     </div>
   );
 }

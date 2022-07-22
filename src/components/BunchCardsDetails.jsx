@@ -6,7 +6,7 @@ import HeroCard from './HeroCard';
 import api from '../api/marvel';
 import General from '../mixins/GeneralFunctions'
 
-function BunchCardsDetails( {itemId, kindItem, itemType, handleModalOpen} ) {
+function BunchCardsDetails( {itemId, kindItem, itemType} ) {
 
   const [items, setItems] = useState(0);
   const [isDisabled, setIsDisable] = useState(false);
@@ -63,7 +63,7 @@ function BunchCardsDetails( {itemId, kindItem, itemType, handleModalOpen} ) {
 
 	return (
     <div>
-      <div className="remove-center">
+      <div className="index__any-element--remove-display-center">
         <h2>
           {`${General.capitalizeFirstLetter(itemType)}: ${ items.total !== undefined ? items.total : 0 }`}
         </h2>
@@ -77,7 +77,7 @@ function BunchCardsDetails( {itemId, kindItem, itemType, handleModalOpen} ) {
                 key={ hero.id }
                 props={ hero }
                 name={hero.title ? hero.title : (hero.fullName ? hero.fullName : hero.name)}
-                customClickEvent={ () => handleModalOpen(hero) }
+                customClickEvent={ () => null }
               />)}
             </div>
           </div>
