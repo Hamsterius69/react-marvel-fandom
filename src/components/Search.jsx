@@ -29,19 +29,19 @@ function SearchComponent({updateWordToSearch, updatekindItemToSearch, isDisable,
 
   return (
 	<div>
-      <div className="pagination">
-      <select className="select-item-kind" name="selectkindOfItems" id="itemsKind"
-    	      onChange={ handleChangeSelect } disabled={isDisable}>
-       	<option value="characters"> characters </option>
-       	<option value="comics"> comics </option>
-       	<option value="creators"> creators </option>
-       	<option value="events"> events </option>
-       	<option value="series"> series </option>
-      </select>
-    </div>
+      <div className="search__select--position">
+        <select className="search__select" name="selectkindOfItems" id="itemsKind"
+    	        onChange={ handleChangeSelect } disabled={isDisable}>
+       	  <option value="characters"> characters </option>
+       	  <option value="comics"> comics </option>
+       	  <option value="creators"> creators </option>
+       	  <option value="events"> events </option>
+       	  <option value="series"> series </option>
+        </select>
+      </div>
 	  <TextField value={input} onInput={(e) => setInput(e.target.value)} onKeyDown={handleKeyDown}
-	  			     className='search-text-field' id="standard-basic" type="search" size='small'/>
-	  <Button className='search-button' onClick={() => updateWordToSearch(input)} variant="contained"
+	  			     className='search__text-field' id="standard-basic" type="search" size='small'/>
+	  <Button className='search__button' onClick={() => updateWordToSearch(input)} variant="contained"
 	  		    color="primary" endIcon={<Search />} disabled={isDisable}>
 	  	Search
 	  </Button>

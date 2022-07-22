@@ -3,25 +3,19 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import Pagination from '@mui/material/Pagination';
 import HeroCard from './HeroCard';
 import Typography from '@mui/material/Typography';
+import '../style-sheets/BunchCards.css';
 
 function BunchCards( {items, totalPages, isDisabled, page, handleChangeItemPerPage, handleChangePagination, handleModalOpen} ) {
 	const linearProgress = isDisabled ? <LinearProgress /> : ''
-  /*
-	const handleModalOpen = (heroData) => {
-    console.log('Open modal');
-		console.log(heroData);
-    console.log('********');
-  }
-	*/
 
 	return (
     <div>
-      <div className="total-text">
+      <div className="bunch-cards__total-text">
         <Typography variant="h6" component="div">
           {`Total: ${items.total}`}
         </Typography>
       </div>
-      <div className="hero-card">
+      <div>
         <div>
           { items.results.map(hero => 
           <HeroCard
@@ -32,11 +26,11 @@ function BunchCards( {items, totalPages, isDisabled, page, handleChangeItemPerPa
           />)}
         </div>
       </div>
-      <div className='linear-progress'>{ linearProgress }</div>
-      <div className="pagination">
+      <div className='bunch-cards__linear-progress'>{ linearProgress }</div>
+      <div className="bunch-cards__pagination">
         <Pagination count={ totalPages } showFirstButton showLastButton color='primary' onChange={ handleChangePagination }
                     page={page} siblingCount={0}  size="small" disabled={isDisabled}/>
-        <select className="select-pagination" name="itemsToView" id="itemsNumber"
+        <select className="bunch-cards__select-pagination" name="itemsToView" id="itemsNumber"
                 onChange={ handleChangeItemPerPage } disabled={isDisabled}>
           <option value="10"> 10 </option>
           <option value="25"> 25 </option>
