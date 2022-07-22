@@ -78,7 +78,7 @@ function BunchCardsDetails( {itemId, kindItem, itemType} ) {
                 key={ hero.id }
                 props={ hero }
                 name={hero.title ? hero.title : (hero.fullName ? hero.fullName : hero.name)}
-                customClickEvent= {null}
+                customClickEvent= {() => null}
                 type= { itemType }
               />)}
             </div>

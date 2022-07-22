@@ -9,15 +9,13 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={ <MainView /> }></Route>
-          <Route path="/Detail" element={ <DetailView /> }></Route>
-          <Route path="*" element={ <Navigate replace to="/" />}></Route>
-        </Routes>
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={ <MainView /> }></Route>
+        <Route path="/Detail" element={ <DetailView /> }></Route>
+        <Route path="*" element={ <Navigate replace to="/" />}></Route>
+      </Routes>
+    </BrowserRouter>
+  </Provider>
 );
