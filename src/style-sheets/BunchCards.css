@@ -20,3 +20,24 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.bunch-cards-detail__modal-image {
+  max-height: 500px !important;
+  max-width: 100%;
+}
+
+.bunch-cards-detail__description {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.bunch-cards-detail__modal-links {
+  display: flexbox;
+}
+
+.bunch-cards-detail__modal-links a {
+  color: white;
+  float: right;
+  margin: 10px;
+}
