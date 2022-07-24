@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #282c34;
+  color: white;
 }
 
 code {
@@ -14,4 +16,14 @@ code {
 
 .index__any-element--remove-display-center {
   display: flex !important;
+}
+
+.index__top-button {
+  position: fixed !important;
+  all: unset; 
+  right: 0px;
+  bottom: 15px;
+  transform: scale(1.8);
+  opacity: 0;
+  transition: .4s;
 }

@@ -11,6 +11,15 @@
 
 .bunch-cards__select-pagination {
   background-color: #282c34;
+  color: white;
+}
+
+.css-1hxrwmy-MuiButtonBase-root-MuiPaginationItem-root {
+  color: white !important;
+}
+
+Pagination {
+  color: white !important;
 }
 
 .bunch-cards__linear-progress {

@@ -5,11 +5,12 @@ import '../style-sheets/MainView.css';
 import Banner from '../components/Banner';
 import BunchCards from '../components/BunchCards';
 import SearchComponent from '../components/Search';
+import { Button } from '@mui/material';
 import api from '../api/marvel';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { connect } from 'react-redux';
-import { selectActiveWord, selectKindItem } from '../store/itemToSearch/reduce'
-import { updateSelectedItem } from '../store/itemToSearch/actions'
+import { selectActiveWord, selectKindItem } from '../store/itemToSearch/reduce';
+import { updateSelectedItem } from '../store/itemToSearch/actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -32,6 +33,8 @@ function MainView( props ) {
 
   useEffect(() => {
       getHeroes();
+      const topBtn = document.getElementById('mainViewTop');
+      window.onscroll = () => window.scrollY > 500 ? topBtn.style.opacity = 1 : topBtn.style.opacity = 0
   }, [props.word, props.item, offset, itemPerPage]);
 
   const handleModalOpen = (heroData) => {
@@ -79,9 +82,16 @@ function MainView( props ) {
     setOffset(page * itemPerPage - itemPerPage);
   }
 
+  const navigateTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   return (
     <div className='main-view'>
       <Banner />
+      <Button id='mainViewTop' onClick={() => navigateTop()} className="index__top-button">
+        🔝
+      </Button>
       <SearchComponent handleClick={ getHeroes } isDisable={ isDisabled } word={ props.word } optionSelected={ props.item }/>
       <div className='main-view__linear-progress'>{ linearProgress }</div>
       {items ? (

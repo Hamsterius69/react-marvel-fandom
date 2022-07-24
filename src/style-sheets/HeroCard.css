@@ -164,7 +164,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   transition-property: opacity, text-indent;
-  transition-duration: 0.4s;
+  transition-duration: 0.8s;
 }
 
 .hero-card__name-label {
@@ -182,7 +182,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   transition-property: opacity, text-indent;
-  transition-duration: 0.4s;
+  transition-duration: 0.8s;
 }
 
 .hero-card__tooltip {
