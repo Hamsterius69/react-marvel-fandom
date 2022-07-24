@@ -91,7 +91,7 @@ function DetailView(props) {
             </Typography>
           </div>
           <div> { detailsList.map((detailType, index) =>
-            <BunchCardsDetails itemId={props.item.id} key={`${detailType}-${index}`} kindItem={ props.kindItem } itemType={ detailType } itemKey={`${detailType}-${index}`}/>)}
+            <BunchCardsDetails itemId={props.item.id} key={`${detailType}-${index}`} kindItem={ props.kindItem } itemType={ detailType } itemKey={`${detailType}-${index}`} isMobile={ isMobile }/>)}
           </div>  
           <div className='detail-view__links'>
             { props.item.urls.map((item, index) => 

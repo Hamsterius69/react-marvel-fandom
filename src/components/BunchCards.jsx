@@ -5,7 +5,7 @@ import HeroCard from './HeroCard';
 import Typography from '@mui/material/Typography';
 import '../style-sheets/BunchCards.css';
 
-function BunchCards( {items, totalPages, isDisabled, page, handleChangeItemPerPage, handleChangePagination, handleModalOpen, type} ) {
+function BunchCards( {items, totalPages, isDisabled, page, handleChangeItemPerPage, handleChangePagination, handleModalOpen, type, isMobile} ) {
 	const linearProgress = isDisabled ? <LinearProgress /> : ''
 
 	return (
@@ -16,7 +16,7 @@ function BunchCards( {items, totalPages, isDisabled, page, handleChangeItemPerPa
         </Typography>
       </div>
       <div>
-        <div>
+        <div className={isMobile ? 'index__horizontal-scroll' : ''}>
           { items.results.map(hero => 
           <HeroCard
             key={ hero.id }

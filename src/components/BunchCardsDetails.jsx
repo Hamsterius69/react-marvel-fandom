@@ -7,7 +7,7 @@ import api from '../api/marvel';
 import General from '../mixins/GeneralFunctions'
 import '../style-sheets/BunchCards.css';
 
-function BunchCardsDetails( {itemId, kindItem, itemType, itemKey} ) {
+function BunchCardsDetails( {itemId, kindItem, itemType, itemKey, isMobile} ) {
 
   const [items, setItems] = useState(0);
   const [isDisabled, setIsDisable] = useState(false);
@@ -72,7 +72,7 @@ function BunchCardsDetails( {itemId, kindItem, itemType, itemKey} ) {
       <div> { items.total > 0 ? 
         <div>
           <div>
-            <div>
+            <div className={isMobile ? 'index__horizontal-scroll' : ''}>
               { items.results.map((hero, index) => 
               <HeroCard
                 key={ `${hero.id}-${index}` }

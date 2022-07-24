@@ -27,6 +27,7 @@ function MainView( props ) {
   const [itemPerPage, setItemPerPage] = useState(10);
   const [page, setPage] = useState(1);
   const [offset, setOffset] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const navigate = useNavigate();
 
   const linearProgress = isDisabled ? <LinearProgress /> : ''
@@ -34,7 +35,11 @@ function MainView( props ) {
   useEffect(() => {
       getHeroes();
       const topBtn = document.getElementById('mainViewTop');
-      window.onscroll = () => window.scrollY > 500 ? topBtn.style.opacity = 1 : topBtn.style.opacity = 0
+      window.onscroll = () => window.scrollY > 500 ? topBtn.style.opacity = 1 : topBtn.style.opacity = 0;
+      handleResize();
+      window.addEventListener('resize', handleResize)
+      
+      return () => window.removeEventListener('resize', handleResize)
   }, [props.word, props.item, offset, itemPerPage]);
 
   const handleModalOpen = (heroData) => {
@@ -86,19 +91,29 @@ function MainView( props ) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  const handleResize = () => {
+    if (window.innerWidth > 800) {
+      setIsMobile(false);
+    } else {
+      setIsMobile(true);
+    }
+  }
+
   return (
     <div className='main-view'>
-      <Banner />
+      <Banner isMobile={isMobile} />
+      {!isMobile ?
       <Button id='mainViewTop' onClick={() => navigateTop()} className="index__top-button">
         🔝
       </Button>
+      : ''}
       <SearchComponent handleClick={ getHeroes } isDisable={ isDisabled } word={ props.word } optionSelected={ props.item }/>
       <div className='main-view__linear-progress'>{ linearProgress }</div>
       {items ? (
         <div >
           <BunchCards items={items} totalPages={totalPages} isDisabled={isDisabled} page={page}
                       handleChangeItemPerPage={handleChangeItemPerPage} handleChangePagination={handleChangePagination}
-                      handleModalOpen={handleModalOpen} type={ props.item } />
+                      handleModalOpen={handleModalOpen} type={ props.item } isMobile={isMobile}/>
         </div>  
       ) : ''}
     </div>

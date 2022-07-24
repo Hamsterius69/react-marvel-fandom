@@ -18,6 +18,14 @@ code {
   display: flex !important;
 }
 
+.css-1hfyor7-MuiPaginationItem-root {
+  color: white !important; 
+}
+
+.css-1hxrwmy-MuiButtonBase-root-MuiPaginationItem-root {
+  color: white !important;
+}
+
 .index__top-button {
   position: fixed !important;
   all: unset; 
@@ -26,4 +34,9 @@ code {
   transform: scale(1.8);
   opacity: 0;
   transition: .4s;
+}
+
+.index__horizontal-scroll {
+  overflow: auto;
+  white-space: nowrap;
 }
