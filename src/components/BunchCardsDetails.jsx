@@ -7,7 +7,7 @@ import api from '../api/marvel';
 import General from '../mixins/GeneralFunctions'
 import '../style-sheets/BunchCards.css';
 
-function BunchCardsDetails( {itemId, kindItem, itemType} ) {
+function BunchCardsDetails( {itemId, kindItem, itemType, itemKey, isMobile} ) {
 
   const [items, setItems] = useState(0);
   const [isDisabled, setIsDisable] = useState(false);
@@ -52,7 +52,7 @@ function BunchCardsDetails( {itemId, kindItem, itemType} ) {
   };
 
   const handleChangeItemPerPage = () => {
-    setItemPerPage(document.getElementById("itemsNumber").value);
+    setItemPerPage(document.getElementById(itemKey).value);
     setPage(1);
     setOffset(0);
   }
@@ -72,10 +72,10 @@ function BunchCardsDetails( {itemId, kindItem, itemType} ) {
       <div> { items.total > 0 ? 
         <div>
           <div>
-            <div>
-              { items.results.map(hero => 
+            <div className={isMobile ? 'index__horizontal-scroll' : ''}>
+              { items.results.map((hero, index) => 
               <HeroCard
-                key={ hero.id }
+                key={ `${hero.id}-${index}` }
                 props={ hero }
                 name={hero.title ? hero.title : (hero.fullName ? hero.fullName : hero.name)}
                 customClickEvent= {() => null}
@@ -87,7 +87,7 @@ function BunchCardsDetails( {itemId, kindItem, itemType} ) {
           <div className="bunch-cards__pagination">
             <Pagination count={ totalPages } showFirstButton showLastButton color='primary' onChange={ handleChangePagination }
                         page={page} siblingCount={0}  size="small" disabled={isDisabled}/>
-            <select className="bunch-cards__select-pagination" name="itemsToView" id="itemsNumber"
+            <select className="bunch-cards__select-pagination" name="itemsToView" id={ itemKey }
                     onChange={ handleChangeItemPerPage } disabled={isDisabled}>
               <option value="10"> 10 </option>
               <option value="25"> 25 </option>

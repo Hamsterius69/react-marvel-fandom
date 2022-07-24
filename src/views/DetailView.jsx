@@ -56,6 +56,10 @@ function DetailView(props) {
   }, []);
 
   const handleResize = () => {
+    navigateTop();
+    const topBtn = document.getElementById('detailViewtop');
+    window.onscroll = () => window.scrollY > 500 ? topBtn.style.opacity = 1 : topBtn.style.opacity = 0
+
     if (window.innerWidth > 800) {
       setIsMobile(false);
     } else {
@@ -63,10 +67,17 @@ function DetailView(props) {
     }
   }
 
+  const navigateTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   return (
     <div className='detail-view'>
       <Button onClick={() => navigate(-1)} className="index__any-element--remove-display-center" size="large" startIcon={<ArrowBackIcon />}>
         Back
+      </Button>
+      <Button id='detailViewtop' onClick={() => navigateTop()} className="index__top-button">
+        🔝
       </Button>
       { props.item ?
         <div>
@@ -79,9 +90,8 @@ function DetailView(props) {
               { props.item.description ? props.item.description : 'There is not description available'}
             </Typography>
           </div>
-          <div> { detailsList.map((detailType, index) => 
-            <BunchCardsDetails itemId={props.item.id} key={`${detailType}-${index}`} kindItem={ props.kindItem } itemType={ detailType } 
-            />)}
+          <div> { detailsList.map((detailType, index) =>
+            <BunchCardsDetails itemId={props.item.id} key={`${detailType}-${index}`} kindItem={ props.kindItem } itemType={ detailType } itemKey={`${detailType}-${index}`} isMobile={ isMobile }/>)}
           </div>  
           <div className='detail-view__links'>
             { props.item.urls.map((item, index) => 
