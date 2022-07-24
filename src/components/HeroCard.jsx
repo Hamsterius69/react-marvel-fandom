@@ -16,7 +16,7 @@ function HeroCard({ props, name, customClickEvent, type }) {
   }))(Tooltip);
   return (
     <HtmlTooltip
-        title={ props.description ? <div className="hero-card__tooltip"><h4>{name}</h4><p>{props.description}</p></div> : <h4>{name}</h4> } placement="top" arrow enterDelay={400} enterNextDelay={400}>
+        title={ props.description ? <div className="hero-card__tooltip"><h4>{name}</h4><p>{props.description}</p></div> : <h4>{name}</h4> } placement="top" arrow>
       <div className={[`${General.getTypeItem(type)}-card`, !customClickEvent ? 'main-card' : '']} onClick={() => customClickEvent(props) }>
         <span />
         <span />

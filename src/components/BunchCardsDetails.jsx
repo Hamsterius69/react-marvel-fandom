@@ -73,9 +73,9 @@ function BunchCardsDetails( {itemId, kindItem, itemType} ) {
         <div>
           <div>
             <div>
-              { items.results.map(hero => 
+              { items.results.map((hero, index) => 
               <HeroCard
-                key={ hero.id }
+                key={ `${hero.id}-${index}` }
                 props={ hero }
                 name={hero.title ? hero.title : (hero.fullName ? hero.fullName : hero.name)}
                 customClickEvent= {() => null}
