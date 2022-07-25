@@ -18,14 +18,6 @@ code {
   display: flex !important;
 }
 
-.css-1hfyor7-MuiPaginationItem-root {
-  color: white !important; 
-}
-
-.css-1hxrwmy-MuiButtonBase-root-MuiPaginationItem-root {
-  color: white !important;
-}
-
 .index__top-button {
   position: fixed !important;
   all: unset; 

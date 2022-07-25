@@ -77,7 +77,7 @@ function BunchCardsDetails( {itemId, kindItem, itemType, itemKey, isMobile} ) {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: '55%',
+    width: isMobile ? '55%' : '25%',
     textAlign: 'center',
     bgcolor: '#282c34',
     border: '2px solid #000',
