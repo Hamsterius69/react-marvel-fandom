@@ -6,7 +6,7 @@ import '../style-sheets/Search.css';
 import { TextField, Button } from '@mui/material';
 import Search from '@material-ui/icons/Search';
 
-function SearchComponent({updateWordToSearch, updatekindItemToSearch, isDisable, word, optionSelected}) {
+function SearchComponent({updateWordToSearch, updatekindItemToSearch, isDisable, word, optionSelected, isMobile}) {
   const [input, setInput] = useState('');
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function SearchComponent({updateWordToSearch, updatekindItemToSearch, isDisable,
         </select>
       </div>
 	  <TextField value={input} onInput={(e) => setInput(e.target.value)} onKeyDown={handleKeyDown}
-	  			     className='search__text-field' id="standard-basic" type="search" size='small'/>
+	  			     className='search__text-field' id="standard-basic" type="search" size='small' autoComplete={isMobile ? 'off' : 'on'} />
 	  <Button className='search__button' onClick={() => updateWordToSearch(input)} variant="contained"
 	  		    color="primary" endIcon={<Search />} disabled={isDisable}>
 	  	Search
