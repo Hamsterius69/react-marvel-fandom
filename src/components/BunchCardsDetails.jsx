@@ -120,7 +120,7 @@ function BunchCardsDetails( {itemId, kindItem, itemType, itemKey, isMobile} ) {
           <div className='bunch-cards__linear-progress'>{ linearProgress }</div>
           <div className="bunch-cards__pagination">
             <Pagination count={ totalPages } showFirstButton showLastButton color='primary' onChange={ handleChangePagination }
-                        page={page} siblingCount={0}  size="small" disabled={isDisabled} classes={{ ul: classes.ul }} />
+                        page={page} siblingCount={1}  size="small" disabled={isDisabled} classes={{ ul: classes.ul }} />
             <select className="bunch-cards__select-pagination" name="itemsToView" id={ itemKey }
                     onChange={ handleChangeItemPerPage } disabled={isDisabled}>
               <option value="10"> 10 </option>
