@@ -35,7 +35,9 @@ function MainView( props ) {
   useEffect(() => {
       getHeroes();
       const topBtn = document.getElementById('mainViewTop');
-      window.onscroll = () => window.scrollY > 500 ? topBtn.style.opacity = 1 : topBtn.style.opacity = 0;
+      if (window.onscroll) {
+        window.onscroll = () => window.scrollY > 500 ? topBtn.style.opacity = 1 : topBtn.style.opacity = 0;
+      }
       handleResize();
       window.addEventListener('resize', handleResize)
       
@@ -107,7 +109,7 @@ function MainView( props ) {
         🔝
       </Button>
       : ''}
-      <SearchComponent handleClick={ getHeroes } isDisable={ isDisabled } word={ props.word } optionSelected={ props.item }/>
+      <SearchComponent handleClick={ getHeroes } isDisable={ isDisabled } word={ props.word } optionSelected={ props.item } isMobile={ isMobile }/>
       <div className='main-view__linear-progress'>{ linearProgress }</div>
       {items ? (
         <div >

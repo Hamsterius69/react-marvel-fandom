@@ -3,12 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router'
 import '../style-sheets/DetailView.css';
 import { selectActiveWord, selectItem, selectKindItem } from '../store/itemToSearch/reduce';
-import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import BunchCardsDetails from '../components/BunchCardsDetails';
 import { connect } from 'react-redux';
-
 
 const mapStateToProps = (state) => {
 
@@ -22,6 +20,7 @@ const mapStateToProps = (state) => {
 function DetailView(props) {
   const [detailsList, setDetailsList] = useState([]);
   const [isMobile, setIsMobile] = useState([false]);
+  const [isFirstTime, setIsFirstTime] = useState([true]);
 
   const navigate = useNavigate();
   const characterDetails = ['comics', 'events', 'series'];
@@ -51,12 +50,16 @@ function DetailView(props) {
         break;
     }
     handleResize();
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    if (isFirstTime) {
+      navigateTop();
+      setIsFirstTime(false);
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const handleResize = () => {
-    navigateTop();
     const topBtn = document.getElementById('detailViewtop');
     window.onscroll = () => window.scrollY > 500 ? topBtn.style.opacity = 1 : topBtn.style.opacity = 0
 

@@ -8,6 +8,7 @@ import General from '../mixins/GeneralFunctions'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
+import { makeStyles } from "@material-ui/core/styles";
 import '../style-sheets/BunchCards.css';
 
 function BunchCardsDetails( {itemId, kindItem, itemType, itemKey, isMobile} ) {
@@ -22,6 +23,14 @@ function BunchCardsDetails( {itemId, kindItem, itemType, itemKey, isMobile} ) {
   const [currentItemSelected, setCurrentItemSelected] = useState(null);
 
   const linearProgress = isDisabled ? <LinearProgress /> : ''
+  const useStyles = makeStyles(() => ({
+    ul: {
+      "& .MuiPaginationItem-root": {
+        color: "white"
+      }
+    }
+  }));
+  const classes = useStyles();
 
   useEffect(() => {
     getItems();
@@ -111,7 +120,7 @@ function BunchCardsDetails( {itemId, kindItem, itemType, itemKey, isMobile} ) {
           <div className='bunch-cards__linear-progress'>{ linearProgress }</div>
           <div className="bunch-cards__pagination">
             <Pagination count={ totalPages } showFirstButton showLastButton color='primary' onChange={ handleChangePagination }
-                        page={page} siblingCount={0}  size="small" disabled={isDisabled}/>
+                        page={page} siblingCount={0}  size="small" disabled={isDisabled} classes={{ ul: classes.ul }} />
             <select className="bunch-cards__select-pagination" name="itemsToView" id={ itemKey }
                     onChange={ handleChangeItemPerPage } disabled={isDisabled}>
               <option value="10"> 10 </option>
