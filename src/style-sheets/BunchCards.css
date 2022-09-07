@@ -1,0 +1,43 @@
+.bunch-cards__total-text {
+  margin-top: 10px;
+  display: inline-flex;
+}
+
+.bunch-cards__pagination {
+  margin: 20px;
+  margin-top: 10px;
+  display: inline-flex;
+}
+
+.bunch-cards__select-pagination {
+  background-color: #282c34;
+  color: white;
+}
+
+.bunch-cards__linear-progress {
+  width: 50%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bunch-cards-detail__modal-image {
+  max-height: 500px !important;
+  max-width: 100%;
+}
+
+.bunch-cards-detail__description {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.bunch-cards-detail__modal-links {
+  display: flexbox;
+}
+
+.bunch-cards-detail__modal-links a {
+  color: white;
+  float: right;
+  margin: 10px;
+}

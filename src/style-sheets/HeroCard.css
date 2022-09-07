@@ -1,0 +1,193 @@
+.hero-card {
+	display: inline-block;
+	margin: 5px 20px 5px;
+	border-radius: 5px;
+	transition-property: height, width, border-radius;
+	transition-duration: 0.4s;
+  overflow: hidden;
+  position: relative;
+}
+
+.comic-card {
+	display: inline-block;
+	margin: 5px 20px 5px;
+  transition-duration: 0.4s;
+  overflow: hidden;
+  position: relative;
+}
+
+.main-card:hover {
+  cursor: pointer;
+}
+
+.hero-card:hover {
+  cursor: pointer;
+	border-radius: 50%;
+}
+
+.comic-card span {
+  transform: 0.5;
+  opacity: 0;
+}
+
+.comic-card:hover span{
+  opacity: 1;
+}
+
+.hero-card:hover > .hero-card__image {
+	border-radius: 50%;
+}
+
+.hero-card:hover > .hero-card__name-label {
+	text-indent: 100%;
+	opacity: 0;
+}
+
+.comic-card:hover > .comic-card__name-label {
+	text-indent: 100%;
+	opacity: 0;
+}
+
+.hero-card__image {
+	height: 250px;
+	width: 250px;
+	border-radius: 5px;
+	transition-property: height, width, border-radius, transform;
+	transition-duration: 0.4s;
+}
+
+.comic-card__image {
+	height: 250px;
+	width: 200px;
+}
+
+.comic-card span:nth-child(1) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, transparent, #1779ff);
+  animation: animate1 1s linear infinite;
+}
+
+.comic-card span:nth-child(2) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, #1779ff);
+  animation: animate2 1s linear infinite;
+  animation-delay: 0.5s;
+}
+
+.comic-card span:nth-child(3) {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to left, transparent, #1779ff);
+  animation: animate3 1s linear infinite;
+}
+
+.comic-card span:nth-child(4) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(to top, transparent, #1779ff);
+  animation: animate4 1s linear infinite;
+  animation-delay: 0.5s;
+}
+
+@keyframes animate1
+{
+  0%
+  {
+    transform: translateX(-100%);
+  }
+  100%
+  {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes animate2
+{
+  0%
+  {
+    transform: translateY(-100%);
+  }
+  100%
+  {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes animate3
+{
+  0%
+  {
+    transform: translateX(100%);
+  }
+  100%
+  {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes animate4
+{
+  0%
+  {
+    transform: translateY(100%);
+  }
+  100%
+  {
+    transform: translateY(-100%);
+  }
+}
+
+.comic-card__name-label {
+  height: 34px;
+  width: 200px;
+  padding-top: 10px;
+  margin-top: -45px;
+  opacity: 0.7;
+  background-color: black;
+  color: white;
+  font-family: Verdana, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition-property: opacity, text-indent;
+  transition-duration: 0.8s;
+}
+
+.hero-card__name-label {
+  height: 34px;
+  width: 250px;
+  padding-top: 10px;
+  margin-top: -45px;
+  opacity: 0.7;
+  background-color: black;
+  color: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-family: Verdana, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition-property: opacity, text-indent;
+  transition-duration: 0.8s;
+}
+
+.hero-card__tooltip {
+	font-family: Verdana, sans-serif;
+	text-align: justify;
+	text-justify: inter-word;
+  position: relative;
+}

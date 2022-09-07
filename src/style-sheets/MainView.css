@@ -1,0 +1,11 @@
+.main-view {
+  text-align: center;
+  min-height: 100vh;
+}
+
+.main-view__linear-progress {
+  width: 50%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -1,0 +1,27 @@
+.search__select--position {
+  margin: 20px;
+  margin-top: 10px;
+  display: inline-flex;
+}
+
+.search__button {
+  margin-left: 1% !important;
+  margin-top: 0px;
+  display: inline-flex;
+}
+
+.search__text-field {
+  background-color: whitesmoke;
+  border-radius: 4px;
+  display: flex;
+  margin-top: 10px !important;
+  padding: 0;
+}
+
+.search__select {
+	background-color: whitesmoke;
+  border-radius: 4px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+}
