@@ -7,7 +7,7 @@ import BunchCards from '../components/BunchCards';
 import SearchComponent from '../components/Search';
 import { Button } from '@mui/material';
 import api from '../api/marvel';
-import LinearProgress from '@material-ui/core/LinearProgress';
+import LinearProgress from '@mui/material/LinearProgress';
 import { connect } from 'react-redux';
 import { selectActiveWord, selectKindItem } from '../store/itemToSearch/reduce';
 import { updateSelectedItem } from '../store/itemToSearch/actions';
@@ -74,7 +74,7 @@ function MainView( props ) {
       setIsDisable(false);
     }).catch((error) => {
       setIsDisable(false);
-      const errorMessage = `Error to get character: ${error.response ? error.response.data.message : ''}`
+      const errorMessage = `Error to get character: ${error.response?.data?.message || error.message || 'Unknown error'}`
       console.log(errorMessage)
     });
   };

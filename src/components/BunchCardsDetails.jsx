@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
-import LinearProgress from '@material-ui/core/LinearProgress';
+import LinearProgress from '@mui/material/LinearProgress';
 import Pagination from '@mui/material/Pagination';
 import HeroCard from './HeroCard';
 import api from '../api/marvel';
@@ -8,7 +8,6 @@ import General from '../mixins/GeneralFunctions'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
-import { makeStyles } from "@material-ui/core/styles";
 import '../style-sheets/BunchCards.css';
 
 function BunchCardsDetails( {itemId, kindItem, itemType, itemKey, isMobile} ) {
@@ -23,14 +22,6 @@ function BunchCardsDetails( {itemId, kindItem, itemType, itemKey, isMobile} ) {
   const [currentItemSelected, setCurrentItemSelected] = useState(null);
 
   const linearProgress = isDisabled ? <LinearProgress /> : ''
-  const useStyles = makeStyles(() => ({
-    ul: {
-      "& .MuiPaginationItem-root": {
-        color: "white"
-      }
-    }
-  }));
-  const classes = useStyles();
 
   useEffect(() => {
     getItems();
@@ -52,7 +43,7 @@ function BunchCardsDetails( {itemId, kindItem, itemType, itemKey, isMobile} ) {
       setIsDisable(false);
     }).catch((error) => {
       setIsDisable(false);
-      const errorMessage = `Error to get ${itemType}: ${error.response ? error.response.data.message : ''}`
+      const errorMessage = `Error to get ${itemType}: ${error.response?.data?.message || error.message || 'Unknown error'}`
       console.log(errorMessage)
     });
   };
@@ -120,7 +111,8 @@ function BunchCardsDetails( {itemId, kindItem, itemType, itemKey, isMobile} ) {
           <div className='bunch-cards__linear-progress'>{ linearProgress }</div>
           <div className="bunch-cards__pagination">
             <Pagination count={ totalPages } showFirstButton showLastButton color='primary' onChange={ handleChangePagination }
-                        page={page} siblingCount={1}  size="small" disabled={isDisabled} classes={{ ul: classes.ul }} />
+                        page={page} siblingCount={1}  size="small" disabled={isDisabled}
+                        sx={{ '& .MuiPaginationItem-root': { color: 'white' } }} />
             <select className="bunch-cards__select-pagination" name="itemsToView" id={ itemKey }
                     onChange={ handleChangeItemPerPage } disabled={isDisabled}>
               <option value="10"> 10 </option>
