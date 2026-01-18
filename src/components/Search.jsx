@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { updateWordToSearch, updatekindItemToSearch } from '../store/itemToSearch/actions'
 import '../style-sheets/Search.css';
 import { TextField, Button } from '@mui/material';
-import Search from '@material-ui/icons/Search';
+import Search from '@mui/icons-material/Search';
 
 function SearchComponent({updateWordToSearch, updatekindItemToSearch, isDisable, word, optionSelected, isMobile}) {
   const [input, setInput] = useState('');
